@@ -6,7 +6,7 @@
     [Description] NVARCHAR(MAX) NOT NULL, 
     [CategoryId] INT NOT NULL, 
     [DateCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
-    [CreatedBy] INT NOT NULL, 
+    [CreatedBy] NVARCHAR(256) NOT NULL DEFAULT SUSER_NAME(), 
     [IsResolved] BIT NOT NULL DEFAULT 0
 
 	CONSTRAINT [PK_Tickets] PRIMARY KEY ([TicketId]),
