@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace TicketTracker.Models
+namespace TicketTracker.ViewModels
 {
     public class Ticket
     {

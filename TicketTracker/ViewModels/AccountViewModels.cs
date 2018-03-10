@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace TicketTracker.Models
+namespace TicketTracker.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
