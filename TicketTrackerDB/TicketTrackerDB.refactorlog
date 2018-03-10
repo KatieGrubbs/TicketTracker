@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="fdca2df6-d4f5-421a-b311-6daa6e5996da" ChangeDateTime="03/10/2018 16:22:17">
+    <Property Name="ElementName" Value="[dbo].[Tickets].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tickets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TicketId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a77548fb-b5cc-492c-916c-d2f72f439179" ChangeDateTime="03/10/2018 16:25:20">
+    <Property Name="ElementName" Value="[dbo].[Tickets].[Priority]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tickets]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PriorityId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="48dde97e-f71f-49a6-8134-9870167b2f16" ChangeDateTime="03/10/2018 16:51:48">
+    <Property Name="ElementName" Value="[dbo].[Priorities].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Priorities]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PriorityId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d72bb8bd-9696-457a-83b2-81e5c49e5bdc" ChangeDateTime="03/10/2018 16:52:16">
+    <Property Name="ElementName" Value="[dbo].[Categories].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Categories]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CategoryId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d7595dba-5af1-47d0-a98a-2dd3dc80e34b" ChangeDateTime="03/10/2018 16:53:02">
+    <Property Name="ElementName" Value="[dbo].[Priorities].[PriorityLevel]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Priorities]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PriorityCode" />
+  </Operation>
+</Operations>
