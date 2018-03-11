@@ -12,13 +12,13 @@ namespace TicketTracker.Models
         public int TicketId { get; set; }
 
         [Required]
-        public int PriorityId { get; set; }
-
-        [Required]
         public string Subject { get; set; }
 
         [Required]
         public string Description { get; set; }
+
+        [Required]
+        public int SeverityLevelId { get; set; }
 
         [Required]
         public int CategoryId { get; set; }
@@ -28,7 +28,7 @@ namespace TicketTracker.Models
         public DateTime DateCreated { get; set; }
 
         [Required]
-        public string CreatedBy { get; set; }
+        public string ReporterId { get; set; }
 
         [Required]
         public bool IsResolved { get; set; }

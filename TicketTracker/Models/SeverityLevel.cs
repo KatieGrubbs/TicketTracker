@@ -6,15 +6,15 @@ using System.Web;
 
 namespace TicketTracker.Models
 {
-    public class Priority
+    public class SeverityLevel
     {
         [Key]
-        public int PriorityId { get; set; }
+        public int SeverityLevelId { get; set; }
 
         [Required]
-        public string PriorityCode { get; set; }
+        public string SeverityLevelCode { get; set; }
 
         [Required]
-        public string PriorityName { get; set; }
+        public string SeverityLevelName { get; set; }
     }
 }
