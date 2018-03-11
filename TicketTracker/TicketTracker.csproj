@@ -205,7 +205,6 @@
     <Compile Include="Models\TicketTrackerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\TicketIndexViewModel.cs" />
     <Compile Include="ViewModels\TicketViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

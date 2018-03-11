@@ -20,14 +20,16 @@ namespace TicketTracker.ViewModels
         public string Description { get; set; }
 
         [Required]
-        [Display(Name = "Severity Level")]
+        [Display(Name = "Severity Level ID")]
         public int SeverityLevelId { get; set; }
+        [Display(Name = "Severity Level")]
         public string SeverityLevelName { get; set; }
         public IEnumerable<SelectListItem> SeverityLevels { get; set; }
 
         [Required]
-        [Display(Name = "Category")]
+        [Display(Name = "Category ID")]
         public int CategoryId { get; set; }
+        [Display(Name = "Category")]
         public string CategoryName { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
 
@@ -37,12 +39,15 @@ namespace TicketTracker.ViewModels
         public DateTime DateCreated { get; set; }
 
         [Required]
-        [Display(Name = "Reporter")]
+        [Display(Name = "Reporter ID")]
         public string ReporterId { get; set; }
+        [Display(Name = "Reporter")]
         public string ReporterName { get; set; }
 
         [Required]
         [Display(Name = "Resolved?")]
         public bool IsResolved { get; set; }
+
+        public string Resolved => IsResolved ? "Yes" : "No";
     }
 }

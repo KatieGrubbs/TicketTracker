@@ -18,16 +18,16 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SeverityLevelId)
+            @Html.DisplayNameFor(model => model.SeverityLevelName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateCreated)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReporterId)
+            @Html.DisplayNameFor(model => model.ReporterName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsResolved)
@@ -46,19 +46,19 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SeverityLevelId)
+            @Html.DisplayFor(modelItem => item.SeverityLevelName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
+            @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateCreated)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReporterId)
+            @Html.DisplayFor(modelItem => item.ReporterName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsResolved)
+            @Html.DisplayFor(modelItem => item.Resolved)
         </td>
         <td>
             @*@Html.ActionLink("Edit", "Edit", new { id=item.TicketId }) |

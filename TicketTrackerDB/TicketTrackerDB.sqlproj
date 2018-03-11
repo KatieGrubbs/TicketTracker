@@ -59,15 +59,12 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Scripts" />
-    <Folder Include="StoredProcedures" />
     <Folder Include="Scripts\PostDeployment" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Tickets.sql" />
     <Build Include="Tables\Categories.sql" />
     <Build Include="Tables\SeverityLevels.sql" />
-    <Build Include="StoredProcedures\GetOpenTickets.sql" />
-    <Build Include="StoredProcedures\GetResolvedTickets.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TicketTrackerDB.refactorlog" />
