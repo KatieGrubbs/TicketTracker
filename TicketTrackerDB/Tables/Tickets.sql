@@ -5,8 +5,8 @@
     [Description] NVARCHAR(MAX) NOT NULL, 
 	[SeverityLevelId] INT NOT NULL DEFAULT 3, 
     [CategoryId] INT NOT NULL, 
-    [DateCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
-    [ReporterId] NVARCHAR(256) NOT NULL DEFAULT SUSER_NAME(), 
+    [DateCreated] DATETIME NULL DEFAULT GETDATE(), 
+    [ReporterId] NVARCHAR(256) NULL DEFAULT SUSER_NAME(), 
     [IsResolved] BIT NOT NULL DEFAULT 0
 
 	CONSTRAINT [PK_Tickets] PRIMARY KEY ([TicketId]),

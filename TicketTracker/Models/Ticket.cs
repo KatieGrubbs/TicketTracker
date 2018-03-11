@@ -8,6 +8,11 @@ namespace TicketTracker.Models
 {
     public class Ticket
     {
+        public Ticket()
+        {
+            DateCreated = DateTime.Now;
+        }
+
         [Key]
         public int TicketId { get; set; }
 
@@ -23,11 +28,9 @@ namespace TicketTracker.Models
         [Required]
         public int CategoryId { get; set; }
 
-        [Required]
         [DataType(DataType.DateTime)]
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
 
-        [Required]
         public string ReporterId { get; set; }
 
         [Required]

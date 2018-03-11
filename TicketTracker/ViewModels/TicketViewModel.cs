@@ -9,42 +9,43 @@ namespace TicketTracker.ViewModels
 {
     public class TicketViewModel
     {
-        [Key]
-        [Display(Name = "Ticket ID")]
-        public int TicketId { get; set; }
+        public TicketViewModel()
+        {
+            SeverityLevels = new List<SelectListItem>();
+            Categories = new List<SelectListItem>();
+            DateCreated = DateTime.Now;
+        }
 
-        [Required]
+        [Required(ErrorMessage = "Subject is required")]
         public string Subject { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Severity Level is required")]
         [Display(Name = "Severity Level ID")]
         public int SeverityLevelId { get; set; }
         [Display(Name = "Severity Level")]
         public string SeverityLevelName { get; set; }
         public IEnumerable<SelectListItem> SeverityLevels { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Category is required")]
         [Display(Name = "Category ID")]
         public int CategoryId { get; set; }
         [Display(Name = "Category")]
         public string CategoryName { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
 
-        [Required]
         [Display(Name = "Date Created")]
         [DataType(DataType.DateTime)]
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
 
-        [Required]
         [Display(Name = "Reporter ID")]
         public string ReporterId { get; set; }
         [Display(Name = "Reporter")]
         public string ReporterName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Resolved? is required")]
         [Display(Name = "Resolved?")]
         public bool IsResolved { get; set; }
 
