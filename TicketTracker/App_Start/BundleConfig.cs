@@ -23,6 +23,10 @@ namespace TicketTracker
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/tablesorter").Include(
+                      "~/Scripts/jquery.tablesorter.combined.js",
+                      "~/Scripts/jquery.tablesorter.combined.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/css/bootstrap.css",
                       "~/Content/css/font-awesome.min.css",

@@ -9,65 +9,72 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeverityLevelName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReporterName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsResolved)
-        </th>
-        <th>
-            Actions
-        </th>
-    </tr>
-
-    @foreach (var ticket in Model)
-    {
+<table id="resolvedTicketsTable" class="table tablesorter">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => ticket.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => ticket.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => ticket.SeverityLevelName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => ticket.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => ticket.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => ticket.ReporterName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => ticket.Resolved)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = ticket.TicketId }) |
-                @Html.ActionLink("Details", "Details", new { id = ticket.TicketId }) |
-                @*@Html.ActionLink("Delete", "Delete", new { id = ticket.TicketId })*@
-                @Html.ActionLink("Re-Open Ticket", "MarkAsOpen", new { id = ticket.TicketId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeverityLevelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReporterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsResolved)
+            </th>
+            <th>
+                Actions
+            </th>
         </tr>
-    }
+    </thead>
 
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => ticket.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => ticket.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => ticket.SeverityLevelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => ticket.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => ticket.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => ticket.ReporterName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => ticket.Resolved)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = ticket.TicketId }) |
+                    @Html.ActionLink("Details", "Details", new { id = ticket.TicketId }) |
+                    @*@Html.ActionLink("Delete", "Delete", new { id = ticket.TicketId })*@
+                    @Html.ActionLink("Re-Open Ticket", "MarkAsOpen", new { id = ticket.TicketId })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+<script>
+    $(".tablesorter").tablesorter();
+</script>
