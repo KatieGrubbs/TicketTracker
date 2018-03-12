@@ -25,6 +25,7 @@ namespace TicketTracker
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/css/bootstrap.css",
+                      "~/Content/css/font-awesome.min.css",
                       "~/Content/css/site.css"));
         }
     }
