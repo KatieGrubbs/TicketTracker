@@ -17,41 +17,61 @@ namespace TicketTracker.Controllers
 {
     public class TicketsController : Controller
     {
-        // GET: Tickets
-        public ActionResult Index()
+        // GET: Tickets/OpenTickets
+        public ActionResult OpenTickets()
         {
-            var openTickets = new List<TicketViewModel>();
+            using (var db = new TicketTrackerContext())
+            {
+                // call stored procedure and return a list of open tickets
+                var openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets").ToList();
+
+                return View(openTickets);
+            }
+        }
+
+        // GET: Tickets/ResolvedTickets
+        public ActionResult ResolvedTickets()
+        {
+            using (var db = new TicketTrackerContext())
+            {
+                // call stored procedure and return a list of resolved tickets
+                var openTickets = db.Database.SqlQuery<TicketViewModel>("GetResolvedTickets").ToList();
+
+                return View(openTickets);
+            }
+        }
+
+        // GET: Tickets/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
             using (var db = new TicketTrackerContext())
             {
-                openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets").ToList();
+                // call stored procedure to find ticket by id
+                var ticketViewModel = db.Database.SqlQuery<TicketViewModel>("GetTicketById @TicketId",
+                    new SqlParameter("TicketId", id)).SingleOrDefault();
+
+                if (ticketViewModel == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(ticketViewModel);
             }
-
-            return View(openTickets);
         }
-
-        //// GET: Tickets/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    TicketViewModel ticketViewModel = db.TicketViewModels.Find(id);
-        //    if (ticketViewModel == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(ticketViewModel);
-        //}
 
         // GET: Tickets/Create
         public ActionResult Create()
         {
+            // make sure that dropdownlists in the create form are populated
             var ticketViewModel = new TicketViewModel
             {
                 SeverityLevels = GetSeverityLevels(),
-                Categories = GetCategories(),
+                Categories = GetCategories()
             };
 
             return View(ticketViewModel);
@@ -66,61 +86,87 @@ namespace TicketTracker.Controllers
             {
                 using (var db = new TicketTrackerContext())
                 {
+                    // create new ticket from viewmodel property values
                     var ticket = new Ticket
                     {
+                        TicketId = ticketViewModel.TicketId,
                         Subject = ticketViewModel.Subject,
                         Description = ticketViewModel.Description,
                         SeverityLevelId = ticketViewModel.SeverityLevelId,
                         CategoryId = ticketViewModel.CategoryId,
-                        ReporterId = User.Identity.GetUserId(),
+                        ReporterId = User.Identity.GetUserId(),     // get logged in user
                         IsResolved = ticketViewModel.IsResolved
                     };
 
                     db.Tickets.Add(ticket);
                     db.SaveChanges();
-                }
 
-                return RedirectToAction("Index", "Tickets");
+                    return RedirectToAction("OpenTickets", "Tickets");
+                }
             }
 
-            ticketViewModel.SeverityLevels = GetSeverityLevels();
-            ticketViewModel.Categories = GetCategories();
-
-            return View(ticketViewModel);
+            return View();
         }
 
-        //// GET: Tickets/Edit/5
+        // GET: Tickets/Edit/5
         //[Authorize(Roles = "Admin")]
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    TicketViewModel ticketViewModel = db.TicketViewModels.Find(id);
-        //    if (ticketViewModel == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(ticketViewModel);
-        //}
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        //// POST: Tickets/Edit/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //[Authorize(Roles = "Admin")]
-        //public ActionResult Edit([Bind(Include = "TicketId,Subject,Description,SeverityLevelId,CategoryId,DateCreated,ReporterId,IsResolved")] TicketViewModel ticketViewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(ticketViewModel).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(ticketViewModel);
-        //}
+            using (var db = new TicketTrackerContext())
+            {
+                // call stored procedure to find ticket by id
+                var ticketViewModel = db.Database.SqlQuery<TicketViewModel>("GetTicketById @TicketId", 
+                    new SqlParameter("TicketId", id)).SingleOrDefault();
+
+                if (ticketViewModel == null)
+                {
+                    return HttpNotFound();
+                }
+
+                // make sure that dropdownlists in the edit form are populated
+                ticketViewModel.SeverityLevels = GetSeverityLevels();
+                ticketViewModel.Categories = GetCategories();
+
+                return View(ticketViewModel);
+            }
+        }
+
+        // POST: Tickets/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(TicketViewModel ticketViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new TicketTrackerContext())
+                {
+                    // create new ticket from viewmodel property values
+                    var ticket = new Ticket
+                    {
+                        TicketId = ticketViewModel.TicketId,
+                        Subject = ticketViewModel.Subject,
+                        Description = ticketViewModel.Description,
+                        SeverityLevelId = ticketViewModel.SeverityLevelId,
+                        CategoryId = ticketViewModel.CategoryId,
+                        DateCreated = ticketViewModel.DateCreated,
+                        ReporterId = ticketViewModel.ReporterId,
+                        IsResolved = ticketViewModel.IsResolved
+                    };
+
+                    db.Entry(ticket).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("OpenTickets", "Tickets");
+                }
+            }
+
+            return View();
+        }
 
         //// GET: Tickets/Delete/5
         //public ActionResult Delete(int? id)
@@ -146,15 +192,6 @@ namespace TicketTracker.Controllers
         //    db.TicketViewModels.Remove(ticketViewModel);
         //    db.SaveChanges();
         //    return RedirectToAction("Index");
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
         //}
 
         private IEnumerable<SelectListItem> GetSeverityLevels()
