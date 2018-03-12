@@ -109,7 +109,6 @@ namespace TicketTracker.Controllers
         }
 
         // GET: Tickets/Edit/5
-        //[Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -193,6 +192,86 @@ namespace TicketTracker.Controllers
         //    db.SaveChanges();
         //    return RedirectToAction("Index");
         //}
+
+        public ActionResult MarkAsResolved(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            using (var db = new TicketTrackerContext())
+            {
+                // call stored procedure to find ticket by id
+                var ticketViewModel = db.Database.SqlQuery<TicketViewModel>("GetTicketById @TicketId",
+                    new SqlParameter("TicketId", id)).SingleOrDefault();
+
+                if (ticketViewModel == null)
+                {
+                    return HttpNotFound();
+                }
+
+                // mark ticket as resolved
+                ticketViewModel.IsResolved = true;
+
+                var ticket = new Ticket
+                {
+                    TicketId = ticketViewModel.TicketId,
+                    Subject = ticketViewModel.Subject,
+                    Description = ticketViewModel.Description,
+                    SeverityLevelId = ticketViewModel.SeverityLevelId,
+                    CategoryId = ticketViewModel.CategoryId,
+                    DateCreated = ticketViewModel.DateCreated,
+                    ReporterId = ticketViewModel.ReporterId,
+                    IsResolved = ticketViewModel.IsResolved
+                };
+
+                db.Entry(ticket).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("OpenTickets", "Tickets");
+            }
+        }
+
+        public ActionResult MarkAsOpen(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            using (var db = new TicketTrackerContext())
+            {
+                // call stored procedure to find ticket by id
+                var ticketViewModel = db.Database.SqlQuery<TicketViewModel>("GetTicketById @TicketId",
+                    new SqlParameter("TicketId", id)).SingleOrDefault();
+
+                if (ticketViewModel == null)
+                {
+                    return HttpNotFound();
+                }
+
+                // re-open ticket
+                ticketViewModel.IsResolved = false;
+
+                var ticket = new Ticket
+                {
+                    TicketId = ticketViewModel.TicketId,
+                    Subject = ticketViewModel.Subject,
+                    Description = ticketViewModel.Description,
+                    SeverityLevelId = ticketViewModel.SeverityLevelId,
+                    CategoryId = ticketViewModel.CategoryId,
+                    DateCreated = ticketViewModel.DateCreated,
+                    ReporterId = ticketViewModel.ReporterId,
+                    IsResolved = ticketViewModel.IsResolved
+                };
+
+                db.Entry(ticket).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("ResolvedTickets", "Tickets");
+            }
+        }
 
         private IEnumerable<SelectListItem> GetSeverityLevels()
         {
