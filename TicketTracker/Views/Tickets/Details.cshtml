@@ -1,13 +1,12 @@
 ﻿@model TicketTracker.ViewModels.TicketViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Ticket Details";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>TicketViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -27,19 +26,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SeverityLevelId)
+            @Html.DisplayNameFor(model => model.SeverityLevelName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SeverityLevelId)
+            @Html.DisplayFor(model => model.SeverityLevelName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CategoryId)
+            @Html.DisplayFor(model => model.CategoryName)
         </dd>
 
         <dt>
@@ -51,11 +50,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ReporterId)
+            @Html.DisplayNameFor(model => model.ReporterName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReporterId)
+            @Html.DisplayFor(model => model.ReporterName)
         </dd>
 
         <dt>
@@ -63,12 +62,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsResolved)
+            @Html.DisplayFor(model => model.Resolved)
         </dd>
-
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.TicketId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "OpenTickets", "Tickets")
 </p>

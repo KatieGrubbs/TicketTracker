@@ -16,6 +16,10 @@ namespace TicketTracker.ViewModels
             DateCreated = DateTime.Now;
         }
 
+        [Key]
+        [Display(Name = "Ticket ID")]
+        public int TicketId { get; set; }
+
         [Required(ErrorMessage = "Subject is required")]
         public string Subject { get; set; }
 
@@ -25,15 +29,21 @@ namespace TicketTracker.ViewModels
         [Required(ErrorMessage = "Severity Level is required")]
         [Display(Name = "Severity Level ID")]
         public int SeverityLevelId { get; set; }
+
         [Display(Name = "Severity Level")]
         public string SeverityLevelName { get; set; }
+
+        [Display(Name = "Severity Level")]
         public IEnumerable<SelectListItem> SeverityLevels { get; set; }
 
         [Required(ErrorMessage = "Category is required")]
         [Display(Name = "Category ID")]
         public int CategoryId { get; set; }
+
         [Display(Name = "Category")]
         public string CategoryName { get; set; }
+
+        [Display(Name = "Category")]
         public IEnumerable<SelectListItem> Categories { get; set; }
 
         [Display(Name = "Date Created")]
@@ -42,13 +52,14 @@ namespace TicketTracker.ViewModels
 
         [Display(Name = "Reporter ID")]
         public string ReporterId { get; set; }
+
         [Display(Name = "Reporter")]
         public string ReporterName { get; set; }
 
-        [Required(ErrorMessage = "Resolved? is required")]
-        [Display(Name = "Resolved?")]
+        [Required(ErrorMessage = "Status is required")]
+        [Display(Name = "Status")]
         public bool IsResolved { get; set; }
 
-        public string Resolved => IsResolved ? "Yes" : "No";
+        public string Resolved => IsResolved ? "Resolved" : "Open/Active";
     }
 }
