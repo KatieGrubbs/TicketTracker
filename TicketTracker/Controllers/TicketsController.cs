@@ -15,6 +15,7 @@ using TicketTracker.ViewModels;
 
 namespace TicketTracker.Controllers
 {
+    [Authorize]
     public class TicketsController : Controller
     {
         // GET: Tickets/OpenTickets

@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="openTicketsTable" class="table tablesorter">
+<table id="openTicketsTable" class="table table-responsive table-bordered table-striped tablesorter">
     <thead>
         <tr>
             <th>
@@ -68,13 +68,29 @@
                     @Html.ActionLink("Edit", "Edit", new { id = ticket.TicketId }) |
                     @Html.ActionLink("Details", "Details", new { id = ticket.TicketId }) |
                     @*@Html.ActionLink("Delete", "Delete", new { id = ticket.TicketId })*@
-                    @Html.ActionLink("Resolve Ticket", "MarkAsResolved", new { id = ticket.TicketId })
+                    @Html.ActionLink("Resolve", "MarkAsResolved", new { id = ticket.TicketId })
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<script>
-    $(".tablesorter").tablesorter();
-</script>
+@section scripts {
+    <script type="text/javascript">
+        $(function() {
+            $("#openTicketsTable").tablesorter({
+                sortList: [[4, 1]],
+                cssHeader: 'header',
+                cssAsc: 'headerSortUp',
+                cssDesc: 'headerSortDown',
+                headers: {
+                    1: { sorter: false },
+                    6: { sorter: false },
+                    7: { sorter: false }
+                }
+            });
+            $("#openTicketsTable thead tr th:eq(1), #openTicketsTable thead tr th:eq(6), #openTicketsTable thead tr th:eq(7)")
+                .removeClass("header headerSortUp headerSortDown");
+        });
+    </script>
+}

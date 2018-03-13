@@ -1,4 +1,12 @@
-﻿body {
+﻿/* COLOR PALETTE
+   [Put colors here.]
+*/
+
+/**************************************************
+ DEFAULT
+**************************************************/
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -22,3 +30,35 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/**************************************************
+ GLOBAL
+**************************************************/
+
+/* Tables */
+table.tablesorter thead tr th {
+    position: relative;
+    background-image: none !important;
+}
+
+    table.tablesorter thead tr th.header:after,
+    table.tablesorter thead tr th.headerSortUp:after,
+    table.tablesorter thead tr th.headerSortDown:after {
+        font-family: FontAwesome;
+        display: block;
+        position: absolute;
+        top: 9px;
+        right: 5px;
+    }
+
+    table.tablesorter thead tr th.header:after {
+        content: "\f0dc";
+    }
+
+    table.tablesorter thead tr th.headerSortUp:after {
+        content: "\f0de";
+    }
+
+    table.tablesorter thead tr th.headerSortDown:after {
+        content: "\f0dd";
+    }
