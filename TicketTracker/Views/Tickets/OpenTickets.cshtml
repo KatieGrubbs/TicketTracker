@@ -67,8 +67,10 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = ticket.TicketId }) |
                     @Html.ActionLink("Details", "Details", new { id = ticket.TicketId }) |
-                    @*@Html.ActionLink("Delete", "Delete", new { id = ticket.TicketId })*@
-                    @Html.ActionLink("Resolve", "MarkAsResolved", new { id = ticket.TicketId })
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Resolve", "MarkAsResolved", new { id = ticket.TicketId })
+                    }
                 </td>
             </tr>
         }

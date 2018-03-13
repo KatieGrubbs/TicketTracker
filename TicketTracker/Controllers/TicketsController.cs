@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using TicketTracker.Models;
 using TicketTracker.ViewModels;
@@ -21,10 +22,21 @@ namespace TicketTracker.Controllers
         // GET: Tickets/OpenTickets
         public ActionResult OpenTickets()
         {
-            using (var db = new TicketTrackerContext())
+            var openTickets = new List<TicketViewModel>();
+
+            using (var db = new ApplicationDbContext())
             {
-                // call stored procedure and return a list of open tickets
-                var openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets").ToList();
+                if (User.IsInRole("Admin"))
+                {
+                    // call stored procedure and return a list of all open tickets
+                    openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets").ToList();
+                }
+                else
+                {
+                    // call stored procedure and return a list of open tickets matching the user's id
+                    openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets")
+                        .Where(t => t.ReporterId == User.Identity.GetUserId()).ToList();
+                }
 
                 return View(openTickets);
             }
@@ -33,12 +45,23 @@ namespace TicketTracker.Controllers
         // GET: Tickets/ResolvedTickets
         public ActionResult ResolvedTickets()
         {
-            using (var db = new TicketTrackerContext())
-            {
-                // call stored procedure and return a list of resolved tickets
-                var openTickets = db.Database.SqlQuery<TicketViewModel>("GetResolvedTickets").ToList();
+            var resolvedTickets = new List<TicketViewModel>();
 
-                return View(openTickets);
+            using (var db = new ApplicationDbContext())
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    // call stored procedure and return a list of all resolved tickets
+                    resolvedTickets = db.Database.SqlQuery<TicketViewModel>("GetResolvedTickets").ToList();
+                }
+                else
+                {
+                    // call stored procedure and return a list of resolved tickets matching the user's id
+                    resolvedTickets = db.Database.SqlQuery<TicketViewModel>("GetResolvedTickets")
+                        .Where(t => t.ReporterId == User.Identity.GetUserId()).ToList();
+                }
+
+                return View(resolvedTickets);
             }
         }
 
@@ -50,7 +73,7 @@ namespace TicketTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            using (var db = new TicketTrackerContext())
+            using (var db = new ApplicationDbContext())
             {
                 // call stored procedure to find ticket by id
                 var ticketViewModel = db.Database.SqlQuery<TicketViewModel>("GetTicketById @TicketId",
@@ -85,7 +108,7 @@ namespace TicketTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new TicketTrackerContext())
+                using (var db = new ApplicationDbContext())
                 {
                     // create new ticket from viewmodel property values
                     var ticket = new Ticket
@@ -117,7 +140,7 @@ namespace TicketTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            using (var db = new TicketTrackerContext())
+            using (var db = new ApplicationDbContext())
             {
                 // call stored procedure to find ticket by id
                 var ticketViewModel = db.Database.SqlQuery<TicketViewModel>("GetTicketById @TicketId", 
@@ -143,7 +166,7 @@ namespace TicketTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new TicketTrackerContext())
+                using (var db = new ApplicationDbContext())
                 {
                     // create new ticket from viewmodel property values
                     var ticket = new Ticket
@@ -168,32 +191,7 @@ namespace TicketTracker.Controllers
             return View();
         }
 
-        //// GET: Tickets/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    TicketViewModel ticketViewModel = db.TicketViewModels.Find(id);
-        //    if (ticketViewModel == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(ticketViewModel);
-        //}
-
-        //// POST: Tickets/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    TicketViewModel ticketViewModel = db.TicketViewModels.Find(id);
-        //    db.TicketViewModels.Remove(ticketViewModel);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
+        [Authorize(Roles = "Admin")]
         public ActionResult MarkAsResolved(int? id)
         {
             if (id == null)
@@ -201,7 +199,7 @@ namespace TicketTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            using (var db = new TicketTrackerContext())
+            using (var db = new ApplicationDbContext())
             {
                 // call stored procedure to find ticket by id
                 var ticketViewModel = db.Database.SqlQuery<TicketViewModel>("GetTicketById @TicketId",
@@ -234,6 +232,7 @@ namespace TicketTracker.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult MarkAsOpen(int? id)
         {
             if (id == null)
@@ -241,7 +240,7 @@ namespace TicketTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            using (var db = new TicketTrackerContext())
+            using (var db = new ApplicationDbContext())
             {
                 // call stored procedure to find ticket by id
                 var ticketViewModel = db.Database.SqlQuery<TicketViewModel>("GetTicketById @TicketId",
@@ -276,7 +275,7 @@ namespace TicketTracker.Controllers
 
         private IEnumerable<SelectListItem> GetSeverityLevels()
         {
-            using (var db = new TicketTrackerContext())
+            using (var db = new ApplicationDbContext())
             {
                 var severityLevels = db.SeverityLevels.Select(s => new SelectListItem
                 {
@@ -290,7 +289,7 @@ namespace TicketTracker.Controllers
 
         private IEnumerable<SelectListItem> GetCategories()
         {
-            using (var db = new TicketTrackerContext())
+            using (var db = new ApplicationDbContext())
             {
                 var categories = db.Categories.OrderBy(c => c.CategoryName).Select(c => new SelectListItem
                 {

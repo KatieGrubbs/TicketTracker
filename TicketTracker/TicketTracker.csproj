@@ -202,7 +202,6 @@
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\SeverityLevel.cs" />
     <Compile Include="Models\Ticket.cs" />
-    <Compile Include="Models\TicketTrackerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\TicketViewModel.cs" />
