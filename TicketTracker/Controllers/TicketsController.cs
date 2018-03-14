@@ -29,13 +29,17 @@ namespace TicketTracker.Controllers
                 if (User.IsInRole("Admin"))
                 {
                     // call stored procedure and return a list of all open tickets
-                    openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets").ToList();
+                    openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets")
+                        .OrderByDescending(t => t.DateCreated)
+                        .ToList();
                 }
                 else
                 {
                     // call stored procedure and return a list of open tickets matching the user's id
                     openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets")
-                        .Where(t => t.ReporterId == User.Identity.GetUserId()).ToList();
+                        .Where(t => t.ReporterId == User.Identity.GetUserId())
+                        .OrderByDescending(t => t.DateCreated)
+                        .ToList();
                 }
 
                 return View(openTickets);

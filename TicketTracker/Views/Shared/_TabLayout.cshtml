@@ -33,7 +33,13 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        <ul class="nav nav-tabs">
+            <li id="open-tickets-tab"><a href="@Url.Action("OpenTickets", "Tickets")"> <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Open/Active Tickets</a></li>
+            <li id="resolved-tickets-tab"><a href="@Url.Action("ResolvedTickets", "Tickets")"> <i class="fa fa-archive" aria-hidden="true"></i> Resolved Tickets</a></li>
+        </ul>
+        <div class="tab-content">
+            @RenderBody()
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year Katie Grubbs</p>

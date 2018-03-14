@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Open/Active Tickets";
+    Layout = "~/Views/Shared/_TabLayout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -9,7 +10,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="openTicketsTable" class="table table-responsive table-bordered table-striped tablesorter">
+<table id="open-tickets-table" class="table table-responsive table-bordered table-striped tablesorter">
     <thead>
         <tr>
             <th>
@@ -65,22 +66,34 @@
                     @Html.DisplayFor(modelItem => ticket.Resolved)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = ticket.TicketId }) |
-                    @Html.ActionLink("Details", "Details", new { id = ticket.TicketId }) |
-                    @if (User.IsInRole("Admin"))
-                    {
-                        @Html.ActionLink("Resolve", "MarkAsResolved", new { id = ticket.TicketId })
-                    }
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="@Url.Action("Edit", "Tickets", new { id = ticket.TicketId })"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>
+                            <li><a href="@Url.Action("Details", "Tickets", new { id = ticket.TicketId })"><i class="fa fa-list-ul" aria-hidden="true"></i> View Details</a></li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("MarkAsResolved", "Tickets", new { id = ticket.TicketId })"><i class="fa fa-flag" aria-hidden="true"></i> Flag as Resolved</a></li>
+                            }
+                        </ul>
+                    </div>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+<script>
+    document.getElementById('open-tickets-tab').classList.add('active');
+</script>
+
 @section scripts {
     <script type="text/javascript">
-        $(function() {
-            $("#openTicketsTable").tablesorter({
+        $(function () {
+            $("#open-tickets-table").tablesorter({
                 sortList: [[4, 1]],
                 cssHeader: 'header',
                 cssAsc: 'headerSortUp',
@@ -91,8 +104,8 @@
                     7: { sorter: false }
                 }
             });
-            $("#openTicketsTable thead tr th:eq(1), #openTicketsTable thead tr th:eq(6), #openTicketsTable thead tr th:eq(7)")
-                .removeClass("header headerSortUp headerSortDown");
+            $("#open-tickets-table thead tr th:eq(1), #open-tickets-table thead tr th:eq(6), #open-tickets-table thead tr th:eq(7)")
+                .removeClass('header headerSortUp headerSortDown');
         });
     </script>
 }

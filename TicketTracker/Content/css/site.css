@@ -3,37 +3,25 @@
 */
 
 /**************************************************
- DEFAULT
-**************************************************/
-
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-/**************************************************
  GLOBAL
 **************************************************/
+
+/* Body */
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background-color: #A7CCED;
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+}
+
+.body-content {
+    padding: 2rem 3rem;
+    background-color: white;
+}
 
 /* Tables */
 table.tablesorter thead tr th {
@@ -62,3 +50,111 @@ table.tablesorter thead tr th {
     table.tablesorter thead tr th.headerSortDown:after {
         content: "\f0dd";
     }
+
+/* Icons */
+.fa {
+    padding: 0 0.25rem;
+}
+
+/* Helpers */
+.top-buffer {
+    margin-top: 2rem;
+}
+
+/**************************************************
+ Navigation
+**************************************************/
+
+/* Navbar */
+.navbar {
+    background-color: #3b5987;
+    border-color: transparent;
+}
+
+    .navbar .btn {
+        background-color: #63ADF2;
+        color: white;
+    }
+
+    .navbar .navbar-brand,
+    .navbar .navbar-nav > li > a {
+        color: white;
+    }
+
+        .navbar .navbar-brand:hover,
+        .navbar .navbar-brand:focus,
+        .navbar .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: white;
+        }
+
+        .navbar .navbar-brand .fa-ticket {
+            transition: transform 0.2s ease 0s;
+        }
+
+        .navbar .navbar-brand:hover .fa-ticket {
+            transform: rotate(25deg);
+        }
+
+
+/* Tabs */
+.nav-tabs {
+    border-bottom: 4px solid #dddddd;
+}
+
+    .nav-tabs > li.active > a,
+    .nav-tabs > li.active > a:focus,
+    .nav-tabs > li.active > a:hover {
+        border-width: 0;
+    }
+
+    .nav-tabs > li > a {
+        border: none;
+        color: #bbbbbb;
+    }
+
+        .nav-tabs > li.active > a,
+        .nav-tabs > li > a:hover {
+            background: transparent;
+            border: none;
+            color: #FF8A65 !important;
+        }
+
+        .nav-tabs > li > a::after {
+            background: #FF8A65;
+            content: "";
+            height: 4px;
+            width: 100%;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            transition: all 250ms ease;
+            transform: scale(0);
+        }
+
+    .nav-tabs > li.active > a::after,
+    .nav-tabs > li:hover > a::after {
+        transform: scale(1);
+    }
+
+.tab-content {
+    padding: 3rem 2.5rem;
+}
+
+/**************************************************
+ MISCELLANEOUS
+**************************************************/
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
