@@ -26,14 +26,14 @@ namespace TicketTracker.ViewModels
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Severity Level is required")]
+        [Required(ErrorMessage = "Severity is required")]
         [Display(Name = "Severity Level ID")]
         public int SeverityLevelId { get; set; }
 
-        [Display(Name = "Severity Level")]
+        [Display(Name = "Severity")]
         public string SeverityLevelName { get; set; }
 
-        [Display(Name = "Severity Level")]
+        [Display(Name = "Severity")]
         public IEnumerable<SelectListItem> SeverityLevels { get; set; }
 
         [Required(ErrorMessage = "Category is required")]

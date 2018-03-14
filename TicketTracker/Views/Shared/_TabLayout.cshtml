@@ -8,30 +8,10 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/tablesorter")
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="@Url.Action("Index", "Home", new {area = ""})" class="navbar-brand">
-                    <span><i class="fa fa-ticket" aria-hidden="true"></i> Ticket Tracker</span>
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
+    @Html.Partial("_NavbarPartial")
     <div class="container body-content">
         <ul class="nav nav-tabs">
             <li id="open-tickets-tab"><a href="@Url.Action("OpenTickets", "Tickets")"> <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Open/Active Tickets</a></li>
@@ -45,7 +25,6 @@
             <p>&copy; @DateTime.Now.Year Katie Grubbs</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

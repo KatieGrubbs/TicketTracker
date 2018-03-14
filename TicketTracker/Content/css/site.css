@@ -1,5 +1,8 @@
 ﻿/* COLOR PALETTE
-   [Put colors here.]
+   blue, dark:      #3B5987
+   blue, light:     #A7CCED
+   green:           #81C784
+   orange:          #FF8A65
 */
 
 /**************************************************
@@ -19,14 +22,31 @@ body {
 }
 
 .body-content {
-    padding: 2rem 3rem;
     background-color: white;
+    padding: 2rem 3rem;
+}
+
+    .body-content#login-form {
+        padding: 2rem 3rem;
+    }
+
+/* Text */
+body,
+h1, h2, h3, h4, h5, h6 {
+    color: #575E67;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
 }
 
 /* Tables */
 table.tablesorter thead tr th {
-    position: relative;
     background-image: none !important;
+    padding-right: 2.5rem;
+    position: relative;
+    white-space: nowrap;
 }
 
     table.tablesorter thead tr th.header:after,
@@ -51,6 +71,35 @@ table.tablesorter thead tr th {
         content: "\f0dd";
     }
 
+@media only screen and (max-width: 800px) {
+    table#open-tickets-table td:nth-child(2),
+    table#open-tickets-table th:nth-child(2) {
+        display: none;
+    }
+}
+ 
+@media only screen and (max-width: 640px) {
+    table#open-tickets-table td:nth-child(4),
+    table#open-tickets-table th:nth-child(4) {
+        display: none;
+    }
+}
+
+/* Buttons */
+.btn {
+    font-weight: bold;
+}
+
+/* Buttons, primary */
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary.focus,
+.btn-primary:active, .btn-primary.active, .btn-primary:visited,
+.btn-primary:active:hover, .btn-primary.active:hover {
+    background-color: #81C784;
+    color: white;
+    border: none;
+    outline: none;
+}
+
 /* Icons */
 .fa {
     padding: 0 0.25rem;
@@ -67,12 +116,13 @@ table.tablesorter thead tr th {
 
 /* Navbar */
 .navbar {
-    background-color: #3b5987;
+    background-color: #3B5987;
     border-color: transparent;
+    font-weight: bold;
 }
 
     .navbar .btn {
-        background-color: #63ADF2;
+        background-color: #FF8A65;
         color: white;
     }
 
@@ -142,8 +192,54 @@ table.tablesorter thead tr th {
 }
 
 /**************************************************
+ LOGIN & REGISTER VIEWS
+**************************************************/
+
+.small-form h2,
+.small-form p {
+    text-align: center;
+}
+
+.small-form .center-content {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.input-group-addon {
+    width: 45px;
+}
+
+/**************************************************
  MISCELLANEOUS
 **************************************************/
+
+/* Scrollbar */
+div::-webkit-scrollbar {
+    width: 15px;
+}
+
+div::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-left: 1px solid #f1f1f1;
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: rgba(191, 191, 191, 0.6); /* Same as #bfbfbf */
+    border-radius: 10px;
+}
+
+    div::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(191, 191, 191, 8.0); /* Same as #bfbfbf */
+    }
+
+/* Helpers */
+.top-buffer {
+    margin-top: 1rem;
+}
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
