@@ -35,5 +35,8 @@ namespace TicketTracker.Models
 
         [Required]
         public bool IsResolved { get; set; }
+
+        [Required]
+        public bool IsDeleted { get; set; }
     }
 }

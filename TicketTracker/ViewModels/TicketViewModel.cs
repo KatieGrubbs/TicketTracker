@@ -39,6 +39,9 @@ namespace TicketTracker.ViewModels
         [Display(Name = "Severity")]
         public IEnumerable<SelectListItem> SeverityLevels { get; set; }
 
+        [Display(Name = "Severity")]
+        public string Severity => SeverityLevelCode + " - " + SeverityLevelName;
+
         [Required(ErrorMessage = "Category is required")]
         [Display(Name = "Category ID")]
         public int CategoryId { get; set; }
@@ -65,7 +68,7 @@ namespace TicketTracker.ViewModels
 
         public string Resolved => IsResolved ? "Resolved" : "Open/Active";
 
-        [Display(Name = "Severity")]
-        public string Severity => SeverityLevelCode + " - " + SeverityLevelName;
+        [Required]
+        public bool IsDeleted { get; set; }
     }
 }

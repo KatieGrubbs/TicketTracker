@@ -7,7 +7,8 @@
     [CategoryId] INT NOT NULL, 
     [DateCreated] DATETIME NULL DEFAULT GETDATE(), 
     [ReporterId] NVARCHAR(256) NULL DEFAULT SUSER_NAME(), 
-    [IsResolved] BIT NOT NULL DEFAULT 0
+    [IsResolved] BIT NOT NULL DEFAULT 0,
+	[IsDeleted] BIT NOT NULL DEFAULT 0, 
 
 	CONSTRAINT [PK_Tickets] PRIMARY KEY ([TicketId]),
     CONSTRAINT [FK_Tickets_SeverityLevels] FOREIGN KEY ([SeverityLevelId])
