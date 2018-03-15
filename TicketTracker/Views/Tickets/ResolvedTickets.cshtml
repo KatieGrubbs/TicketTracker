@@ -37,9 +37,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.IsResolved)
                         </th>
-                        <th>
-                            Actions
-                        </th>
+                        <th></th>
                     </tr>
                 </thead>
 
@@ -69,11 +67,11 @@
                                 @Html.DisplayFor(modelItem => ticket.Resolved)
                             </td>
                             <td>
-                                <div class="btn-group">
+                                <div class="btn-group dropdown">
                                     <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                     </button>
-                                    <ul class="dropdown-menu" role="menu">
+                                    <ul class="dropdown-menu dropdown-menu-right pull-right" role="menu">
                                         <li><a href="@Url.Action("Edit", "Tickets", new { id = ticket.TicketId })"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Ticket</a></li>
                                         <li><a href="@Url.Action("Details", "Tickets", new { id = ticket.TicketId })"><i class="fa fa-list-ul" aria-hidden="true"></i> View Details</a></li>
                                         @if (User.IsInRole("Admin"))
