@@ -6,7 +6,7 @@
 	[SeverityLevelId] INT NOT NULL DEFAULT 3, 
     [CategoryId] INT NOT NULL, 
     [DateCreated] DATETIME NULL DEFAULT GETDATE(), 
-    [ReporterId] NVARCHAR(256) NULL DEFAULT SUSER_NAME(), 
+    [ReporterId] NVARCHAR(128) NULL , 
     [IsResolved] BIT NOT NULL DEFAULT 0,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
 
@@ -15,6 +15,6 @@
 		REFERENCES dbo.SeverityLevels ([SeverityLevelId]),
 	CONSTRAINT [FK_Tickets_Categories] FOREIGN KEY ([CategoryId])
 		REFERENCES dbo.Categories ([CategoryId]),
-	--CONSTRAINT [FK_Tickets_AspNetUsers] FOREIGN KEY ([CreatedBy])
-	--	REFERENCES dbo.AspNetUsers ([Id])
+	CONSTRAINT [FK_Tickets_AspNetUsers] FOREIGN KEY ([ReporterId])
+		REFERENCES dbo.AspNetUsers ([Id])
 )

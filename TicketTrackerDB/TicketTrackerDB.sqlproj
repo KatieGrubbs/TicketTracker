@@ -65,6 +65,11 @@
     <Build Include="Tables\Tickets.sql" />
     <Build Include="Tables\Categories.sql" />
     <Build Include="Tables\SeverityLevels.sql" />
+    <Build Include="Tables\AspNetRoles.sql" />
+    <Build Include="Tables\AspNetUserClaims.sql" />
+    <Build Include="Tables\AspNetUserLogins.sql" />
+    <Build Include="Tables\AspNetUserRoles.sql" />
+    <Build Include="Tables\AspNetUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TicketTrackerDB.refactorlog" />
