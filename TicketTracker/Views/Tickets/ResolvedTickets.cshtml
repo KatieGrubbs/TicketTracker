@@ -77,7 +77,8 @@
                                         @if (User.IsInRole("Admin"))
                                         {
                                             <li role="separator" class="divider"></li>
-                                            <li><a href="@Url.Action("FlagAsOpen", "Tickets", new { id = ticket.TicketId })" class="danger"><i class="fa fa-flag" aria-hidden="true"></i> Flag as Unresolved</a></li>
+                                            <li><a href="@Url.Action("FlagAsOpen", "Tickets", new { id = ticket.TicketId })" class="warning"><i class="fa fa-flag" aria-hidden="true"></i> Flag as Unresolved</a></li>
+                                            <li><a href="@Url.Action("FlagAsDeleted", "Tickets", new { id = ticket.TicketId })" class="danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> Remove Ticket</a></li>
                                         }
                                     </ul>
                                 </div>

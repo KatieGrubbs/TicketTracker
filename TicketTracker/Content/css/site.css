@@ -128,6 +128,17 @@ table {
     color: #575e67 !important;
 }
 
+.dropdown-menu > li > a.warning {
+    background-color: transparent;
+    color: #ffb74d !important;
+}
+
+.dropdown-menu > li .warning:focus,
+.dropdown-menu > li .warning:hover {
+    background-color: #ffb74d;
+    color: white !important;
+}
+
 .dropdown-menu > li > a.danger {
     background-color: transparent;
     color: #ef5350 !important;
@@ -296,6 +307,10 @@ div::-webkit-scrollbar-thumb {
 /* Add space above any element */
 .top-buffer {
     margin-top: 1rem;
+}
+
+.table-responsive {
+    overflow-x: visible;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 

@@ -10,7 +10,7 @@ namespace TicketTracker.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("OpenTickets", "Tickets");
         }
     }
 }

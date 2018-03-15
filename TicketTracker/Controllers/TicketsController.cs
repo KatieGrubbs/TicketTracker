@@ -29,17 +29,13 @@ namespace TicketTracker.Controllers
                 if (User.IsInRole("Admin"))
                 {
                     // call stored procedure and return a list of all open tickets
-                    openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets")
-                        .OrderByDescending(t => t.DateCreated)
-                        .ToList();
+                    openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets").ToList();
                 }
                 else
                 {
                     // call stored procedure and return a list of open tickets matching the user's id
                     openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets")
-                        .Where(t => t.ReporterId == User.Identity.GetUserId())
-                        .OrderByDescending(t => t.DateCreated)
-                        .ToList();
+                        .Where(t => t.ReporterId == User.Identity.GetUserId()).ToList();
                 }
 
                 return View(openTickets);
@@ -123,7 +119,8 @@ namespace TicketTracker.Controllers
                         SeverityLevelId = ticketViewModel.SeverityLevelId,
                         CategoryId = ticketViewModel.CategoryId,
                         ReporterId = User.Identity.GetUserId(),     // get logged in user
-                        IsResolved = ticketViewModel.IsResolved
+                        IsResolved = ticketViewModel.IsResolved,
+                        IsDeleted = ticketViewModel.IsDeleted
                     };
 
                     db.Tickets.Add(ticket);
@@ -182,7 +179,8 @@ namespace TicketTracker.Controllers
                         CategoryId = ticketViewModel.CategoryId,
                         DateCreated = ticketViewModel.DateCreated,
                         ReporterId = ticketViewModel.ReporterId,
-                        IsResolved = ticketViewModel.IsResolved
+                        IsResolved = ticketViewModel.IsResolved,
+                        IsDeleted = ticketViewModel.IsDeleted
                     };
 
                     db.Entry(ticket).State = EntityState.Modified;
@@ -226,7 +224,8 @@ namespace TicketTracker.Controllers
                     CategoryId = ticketViewModel.CategoryId,
                     DateCreated = ticketViewModel.DateCreated,
                     ReporterId = ticketViewModel.ReporterId,
-                    IsResolved = ticketViewModel.IsResolved
+                    IsResolved = ticketViewModel.IsResolved,
+                    IsDeleted = ticketViewModel.IsDeleted
                 };
 
                 db.Entry(ticket).State = EntityState.Modified;
@@ -267,7 +266,8 @@ namespace TicketTracker.Controllers
                     CategoryId = ticketViewModel.CategoryId,
                     DateCreated = ticketViewModel.DateCreated,
                     ReporterId = ticketViewModel.ReporterId,
-                    IsResolved = ticketViewModel.IsResolved
+                    IsResolved = ticketViewModel.IsResolved,
+                    IsDeleted = ticketViewModel.IsDeleted
                 };
 
                 db.Entry(ticket).State = EntityState.Modified;
@@ -277,6 +277,48 @@ namespace TicketTracker.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult FlagAsDeleted(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            using (var db = new ApplicationDbContext())
+            {
+                // call stored procedure to find ticket by id
+                var ticketViewModel = db.Database.SqlQuery<TicketViewModel>("GetTicketById @TicketId",
+                    new SqlParameter("TicketId", id)).SingleOrDefault();
+
+                if (ticketViewModel == null)
+                {
+                    return HttpNotFound();
+                }
+
+                // soft-delete ticket
+                ticketViewModel.IsDeleted = true;
+
+                var ticket = new Ticket
+                {
+                    TicketId = ticketViewModel.TicketId,
+                    Subject = ticketViewModel.Subject,
+                    Description = ticketViewModel.Description,
+                    SeverityLevelId = ticketViewModel.SeverityLevelId,
+                    CategoryId = ticketViewModel.CategoryId,
+                    DateCreated = ticketViewModel.DateCreated,
+                    ReporterId = ticketViewModel.ReporterId,
+                    IsResolved = ticketViewModel.IsResolved,
+                    IsDeleted = ticketViewModel.IsDeleted
+                };
+
+                db.Entry(ticket).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("OpenTickets", "Tickets");
+            }
+        }
+        
         private IEnumerable<SelectListItem> GetSeverityLevels()
         {
             using (var db = new ApplicationDbContext())
