@@ -57,19 +57,24 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Tables" />
     <Folder Include="Scripts" />
     <Folder Include="Scripts\PostDeployment" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Tickets.sql" />
-    <Build Include="Tables\Categories.sql" />
-    <Build Include="Tables\SeverityLevels.sql" />
-    <Build Include="Tables\AspNetRoles.sql" />
-    <Build Include="Tables\AspNetUserClaims.sql" />
-    <Build Include="Tables\AspNetUserLogins.sql" />
-    <Build Include="Tables\AspNetUserRoles.sql" />
-    <Build Include="Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Stored Procedures\GetOpenTickets.sql" />
+    <Build Include="dbo\Stored Procedures\GetResolvedTickets.sql" />
+    <Build Include="dbo\Stored Procedures\GetTicketById.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\Categories.sql" />
+    <Build Include="dbo\Tables\SeverityLevels.sql" />
+    <Build Include="dbo\Tables\Tickets.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TicketTrackerDB.refactorlog" />
