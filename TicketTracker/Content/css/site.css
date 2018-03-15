@@ -43,9 +43,9 @@ a {
     color: #ff8a65;
 }
 
-a:hover {
-    color: #ff9574;
-}
+    a:hover {
+        color: #ff9574;
+    }
 
 /* Buttons */
 .btn {
@@ -62,10 +62,10 @@ a:hover {
     outline: none;
 }
 
-.btn-default:hover, .btn-default:focus, .btn-default.focus,
-.btn-default:active, .btn-default.active {
-    background-color: #ff9574;
-}
+    .btn-default:hover, .btn-default:focus, .btn-default.focus,
+    .btn-default:active, .btn-default.active {
+        background-color: #ff9574;
+    }
 
 /* Buttons, primary */
 .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary.focus,
@@ -77,44 +77,44 @@ a:hover {
     outline: none;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary.focus,
-.btn-primary:active, .btn-primary.active {
-    background-color: #8dcc90;
-}
+    .btn-primary:hover, .btn-primary:focus, .btn-primary.focus,
+    .btn-primary:active, .btn-primary.active {
+        background-color: #8dcc90;
+    }
 
 /* Tables */
 table {
     border-spacing: 5px;
 }
 
-table.tablesorter thead tr th {
-    background-image: none !important;
-    padding-right: 2.5rem;
-    position: relative;
-    white-space: nowrap;
-}
+    table.tablesorter thead tr th {
+        background-image: none !important;
+        padding-right: 2.5rem;
+        position: relative;
+        white-space: nowrap;
+    }
 
-table.tablesorter thead tr th.header:after,
-table.tablesorter thead tr th.headerSortUp:after,
-table.tablesorter thead tr th.headerSortDown:after {
-    font-family: FontAwesome;
-    display: block;
-    position: absolute;
-    top: 9px;
-    right: 5px;
-}
+        table.tablesorter thead tr th.header:after,
+        table.tablesorter thead tr th.headerSortUp:after,
+        table.tablesorter thead tr th.headerSortDown:after {
+            font-family: FontAwesome;
+            display: block;
+            position: absolute;
+            top: 9px;
+            right: 5px;
+        }
 
-table.tablesorter thead tr th.header:after {
-    content: "\f0dc";
-}
+        table.tablesorter thead tr th.header:after {
+            content: "\f0dc";
+        }
 
-table.tablesorter thead tr th.headerSortUp:after {
-    content: "\f0de";
-}
+        table.tablesorter thead tr th.headerSortUp:after {
+            content: "\f0de";
+        }
 
-table.tablesorter thead tr th.headerSortDown:after {
-    content: "\f0dd";
-}
+        table.tablesorter thead tr th.headerSortDown:after {
+            content: "\f0dd";
+        }
 
 /* Dropdowns */
 .dropdown-menu > li > a {
@@ -160,25 +160,25 @@ table.tablesorter thead tr th.headerSortDown:after {
     font-weight: bold;
 }
 
-.navbar .navbar-brand,
-.navbar .navbar-nav > li > a {
-    color: white;
-}
+    .navbar .navbar-brand,
+    .navbar .navbar-nav > li > a {
+        color: white;
+    }
 
-.navbar .navbar-brand:hover,
-.navbar .navbar-brand:focus,
-.navbar .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: white;
-}
+        .navbar .navbar-brand:hover,
+        .navbar .navbar-brand:focus,
+        .navbar .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: white;
+        }
 
-.navbar .navbar-brand .fa-ticket {
-    transition: transform 0.2s ease 0s;
-}
+        .navbar .navbar-brand .fa-ticket {
+            transition: transform 0.2s ease 0s;
+        }
 
-.navbar .navbar-brand:hover .fa-ticket {
-    transform: rotate(25deg);
-}
+        .navbar .navbar-brand:hover .fa-ticket {
+            transform: rotate(25deg);
+        }
 
 
 /* Tabs */
@@ -186,40 +186,40 @@ table.tablesorter thead tr th.headerSortDown:after {
     border-bottom: 4px solid #dddddd;
 }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:focus,
-.nav-tabs > li.active > a:hover {
-    border-width: 0;
-}
+    .nav-tabs > li.active > a,
+    .nav-tabs > li.active > a:focus,
+    .nav-tabs > li.active > a:hover {
+        border-width: 0;
+    }
 
-.nav-tabs > li > a {
-    border: none;
-    color: #BBBBBB;
-}
+    .nav-tabs > li > a {
+        border: none;
+        color: #BBBBBB;
+    }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li > a:hover {
-    background: transparent;
-    border: none;
-    color: #ff8a65 !important;
-}
+        .nav-tabs > li.active > a,
+        .nav-tabs > li > a:hover {
+            background: transparent;
+            border: none;
+            color: #ff8a65 !important;
+        }
 
-.nav-tabs > li > a::after {
-    background: #ff8a65;
-    content: "";
-    height: 4px;
-    width: 100%;
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    transition: all 250ms ease;
-    transform: scale(0);
-}
+        .nav-tabs > li > a::after {
+            background: #ff8a65;
+            content: "";
+            height: 4px;
+            width: 100%;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            transition: all 250ms ease;
+            transform: scale(0);
+        }
 
-.nav-tabs > li.active > a::after,
-.nav-tabs > li:hover > a::after {
-    transform: scale(1);
-}
+    .nav-tabs > li.active > a::after,
+    .nav-tabs > li:hover > a::after {
+        transform: scale(1);
+    }
 
 .tab-content {
     padding: 3rem 2.5rem;
@@ -235,15 +235,15 @@ table.tablesorter thead tr th.headerSortDown:after {
     border-radius: 1.5rem;
 }
 
-.small-form h2,
-.small-form p {
-    text-align: center;
-}
+    .small-form h2,
+    .small-form p {
+        text-align: center;
+    }
 
-.small-form .center-content {
-    margin: 0 auto;
-    width: 50%;
-}
+    .small-form .center-content {
+        margin: 0 auto;
+        width: 50%;
+    }
 
     .small-form input.form-control,
     .small-form input.form-control:focus,
@@ -258,15 +258,15 @@ table.tablesorter thead tr th.headerSortDown:after {
         -o-transition: none;
     }
 
-.small-form .input-group {
-    width: 100%;
-}
+    .small-form .input-group {
+        width: 100%;
+    }
 
-.small-form .input-group-addon {
-    background-color: #dce7eb;
-    color: #6e7783;
-    width: 45px;
-}
+    .small-form .input-group-addon {
+        background-color: #dce7eb;
+        color: #6e7783;
+        width: 45px;
+    }
 
 /**************************************************
  MISCELLANEOUS
@@ -288,10 +288,10 @@ div::-webkit-scrollbar-thumb {
     border-radius: 10px;
 }
 
-div::-webkit-scrollbar-thumb:hover {
-    background-color: #bfbfbf;
-    background-color: rgba(191, 191, 191, 8.0); /* Same as #bfbfbf */
-}
+    div::-webkit-scrollbar-thumb:hover {
+        background-color: #bfbfbf;
+        background-color: rgba(191, 191, 191, 8.0); /* Same as #bfbfbf */
+    }
 
 /* Add space above any element */
 .top-buffer {
