@@ -71,20 +71,6 @@ table.tablesorter thead tr th {
         content: "\f0dd";
     }
 
-@media only screen and (max-width: 800px) {
-    table#open-tickets-table td:nth-child(2),
-    table#open-tickets-table th:nth-child(2) {
-        display: none;
-    }
-}
- 
-@media only screen and (max-width: 640px) {
-    table#open-tickets-table td:nth-child(4),
-    table#open-tickets-table th:nth-child(4) {
-        display: none;
-    }
-}
-
 /* Buttons */
 .btn {
     font-weight: bold;

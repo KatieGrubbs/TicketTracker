@@ -5,89 +5,92 @@
     Layout = "~/Views/Shared/_TabLayout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</div>
+<div class="row top-buffer">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table id="resolved-tickets-table" class="table table-responsive table-bordered table-striped tablesorter">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Subject)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SeverityLevelName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CategoryName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateCreated)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReporterName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsResolved)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
 
-<table id="resolved-tickets-table" class="table table-responsive table-bordered table-striped tablesorter">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TicketId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SeverityLevelName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReporterName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsResolved)
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var ticket in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => ticket.TicketId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => ticket.Subject)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => ticket.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => ticket.SeverityLevelName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => ticket.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => ticket.DateCreated)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => ticket.ReporterName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => ticket.Resolved)
-                </td>
-                <td>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="@Url.Action("Edit", "Tickets", new {id = ticket.TicketId})"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>
-                            <li><a href="@Url.Action("Details", "Tickets", new {id = ticket.TicketId})"><i class="fa fa-list-ul" aria-hidden="true"></i> View Details</a></li>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li role="separator" class="divider"></li>
-                                <li><a href="@Url.Action("MarkAsOpen", "Tickets", new {id = ticket.TicketId})"><i class="fa fa-flag" aria-hidden="true"></i> Flag as Unresolved</a></li>
-                            }
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                <tbody>
+                    @foreach (var ticket in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => ticket.Subject)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => ticket.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => ticket.SeverityLevelName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => ticket.CategoryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => ticket.DateCreated)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => ticket.ReporterName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => ticket.Resolved)
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="@Url.Action("Edit", "Tickets", new {id = ticket.TicketId})"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>
+                                        <li><a href="@Url.Action("Details", "Tickets", new {id = ticket.TicketId})"><i class="fa fa-list-ul" aria-hidden="true"></i> View Details</a></li>
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="@Url.Action("MarkAsOpen", "Tickets", new {id = ticket.TicketId})"><i class="fa fa-flag" aria-hidden="true"></i> Flag as Unresolved</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <script>
     document.getElementById('resolved-tickets-tab').classList.add('active');
@@ -97,17 +100,17 @@
     <script type="text/javascript">
         $(function () {
             $("#resolved-tickets-table").tablesorter({
-                sortList: [[5, 1]],
+                sortList: [[4, 1]],
                 cssHeader: 'header',
                 cssAsc: 'headerSortUp',
                 cssDesc: 'headerSortDown',
                 headers: {
-                    2: { sorter: false },
-                    7: { sorter: false },
-                    8: { sorter: false }
+                    1: { sorter: false },
+                    6: { sorter: false },
+                    7: { sorter: false }
                 }
             });
-            $("#resolved-tickets-table thead tr th:eq(2), #resolved-tickets-table thead tr th:eq(7), #resolved-tickets-table thead tr th:eq(8)")
+            $("#resolved-tickets-table thead tr th:eq(1), #resolved-tickets-table thead tr th:eq(6), #resolved-tickets-table thead tr th:eq(7)")
                 .removeClass("header headerSortUp headerSortDown");
         });
     </script>
