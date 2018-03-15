@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <section class="small-form">
+        <div class="small-form">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
             {
                 @Html.AntiForgeryToken()
@@ -52,7 +52,7 @@
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
                     </p>*@
             }
-        </section>
+        </div>
     </div>
     <div class="col-md-3"></div>
 </div>

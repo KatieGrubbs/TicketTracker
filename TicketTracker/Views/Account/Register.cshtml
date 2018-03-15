@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <section class="small-form">
+        <div class="small-form">
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
             {
                 @Html.AntiForgeryToken()
@@ -33,7 +33,7 @@
                         @*@Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })*@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-check"></i></span>
-                            @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control", placeholder = "Confirm Password"})
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -45,7 +45,7 @@
                     Already have an account? @Html.ActionLink("Sign In", "Login")
                 </p>
             }
-        </section>
+        </div>
     </div>
     <div class="col-md-3"></div>
 </div>

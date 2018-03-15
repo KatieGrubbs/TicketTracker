@@ -1,12 +1,13 @@
 ﻿/* COLOR PALETTE
-   blue, dark:      #3B5987
-   blue, light:     #A7CCED
-   green:           #81C784
-   orange:          #FF8A65
+   blue, dark:      #3b5987
+   blue, light:     #a7cced
+   gray, dark:      #575e67
+   green:           #81c784
+   orange:          #ff8a65
 */
 
 /**************************************************
- GLOBAL
+ GENERAL
 **************************************************/
 
 /* Body */
@@ -16,7 +17,7 @@ html {
 }
 
 body {
-    background-color: #A7CCED;
+    background-color: #a7cced;
     padding-top: 8rem;
     padding-bottom: 2rem;
 }
@@ -24,16 +25,13 @@ body {
 .body-content {
     background-color: white;
     padding: 2rem 3rem;
+    border-radius: 1.5rem;
 }
-
-    .body-content#login-form {
-        padding: 2rem 3rem;
-    }
 
 /* Text */
 body,
 h1, h2, h3, h4, h5, h6 {
-    color: #575E67;
+    color: #575e67;
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -41,7 +39,54 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
 }
 
+a {
+    color: #ff8a65;
+}
+
+a:hover {
+    color: #ff9574;
+}
+
+/* Buttons */
+.btn {
+    font-weight: bold;
+}
+
+/* Buttons, default */
+.btn-default, .btn-default:hover, .btn-default:focus, .btn-default.focus,
+.btn-default:active, .btn-default.active, .btn-default:visited,
+.btn-default:active:hover, .btn-default.active:hover {
+    background-color: #ff8a65;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default.focus,
+.btn-default:active, .btn-default.active {
+    background-color: #ff9574;
+}
+
+/* Buttons, primary */
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary.focus,
+.btn-primary:active, .btn-primary.active, .btn-primary:visited,
+.btn-primary:active:hover, .btn-primary.active:hover {
+    background-color: #81c784;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus,
+.btn-primary:active, .btn-primary.active {
+    background-color: #8dcc90;
+}
+
 /* Tables */
+table {
+    border-spacing: 5px;
+}
+
 table.tablesorter thead tr th {
     background-image: none !important;
     padding-right: 2.5rem;
@@ -49,41 +94,49 @@ table.tablesorter thead tr th {
     white-space: nowrap;
 }
 
-    table.tablesorter thead tr th.header:after,
-    table.tablesorter thead tr th.headerSortUp:after,
-    table.tablesorter thead tr th.headerSortDown:after {
-        font-family: FontAwesome;
-        display: block;
-        position: absolute;
-        top: 9px;
-        right: 5px;
-    }
-
-    table.tablesorter thead tr th.header:after {
-        content: "\f0dc";
-    }
-
-    table.tablesorter thead tr th.headerSortUp:after {
-        content: "\f0de";
-    }
-
-    table.tablesorter thead tr th.headerSortDown:after {
-        content: "\f0dd";
-    }
-
-/* Buttons */
-.btn {
-    font-weight: bold;
+table.tablesorter thead tr th.header:after,
+table.tablesorter thead tr th.headerSortUp:after,
+table.tablesorter thead tr th.headerSortDown:after {
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    top: 9px;
+    right: 5px;
 }
 
-/* Buttons, primary */
-.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary.focus,
-.btn-primary:active, .btn-primary.active, .btn-primary:visited,
-.btn-primary:active:hover, .btn-primary.active:hover {
-    background-color: #81C784;
-    color: white;
-    border: none;
-    outline: none;
+table.tablesorter thead tr th.header:after {
+    content: "\f0dc";
+}
+
+table.tablesorter thead tr th.headerSortUp:after {
+    content: "\f0de";
+}
+
+table.tablesorter thead tr th.headerSortDown:after {
+    content: "\f0dd";
+}
+
+/* Dropdowns */
+.dropdown-menu > li > a {
+    background-color: transparent;
+    color: #575e67 !important;
+}
+
+.dropdown-menu > li a:focus,
+.dropdown-menu > li a:hover {
+    background-color: #eeeeee;
+    color: #575e67 !important;
+}
+
+.dropdown-menu > li > a.danger {
+    background-color: transparent;
+    color: #ef5350 !important;
+}
+
+.dropdown-menu > li .danger:focus,
+.dropdown-menu > li .danger:hover {
+    background-color: #ef5350;
+    color: white !important;
 }
 
 /* Icons */
@@ -97,40 +150,35 @@ table.tablesorter thead tr th {
 }
 
 /**************************************************
- Navigation
+ NAVIGATION
 **************************************************/
 
 /* Navbar */
 .navbar {
-    background-color: #3B5987;
+    background-color: #3b5987;
     border-color: transparent;
     font-weight: bold;
 }
 
-    .navbar .btn {
-        background-color: #FF8A65;
-        color: white;
-    }
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+    color: white;
+}
 
-    .navbar .navbar-brand,
-    .navbar .navbar-nav > li > a {
-        color: white;
-    }
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus,
+.navbar .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: white;
+}
 
-        .navbar .navbar-brand:hover,
-        .navbar .navbar-brand:focus,
-        .navbar .navbar-nav > li > a:hover,
-        .navbar-default .navbar-nav > li > a:focus {
-            color: white;
-        }
+.navbar .navbar-brand .fa-ticket {
+    transition: transform 0.2s ease 0s;
+}
 
-        .navbar .navbar-brand .fa-ticket {
-            transition: transform 0.2s ease 0s;
-        }
-
-        .navbar .navbar-brand:hover .fa-ticket {
-            transform: rotate(25deg);
-        }
+.navbar .navbar-brand:hover .fa-ticket {
+    transform: rotate(25deg);
+}
 
 
 /* Tabs */
@@ -138,48 +186,54 @@ table.tablesorter thead tr th {
     border-bottom: 4px solid #dddddd;
 }
 
-    .nav-tabs > li.active > a,
-    .nav-tabs > li.active > a:focus,
-    .nav-tabs > li.active > a:hover {
-        border-width: 0;
-    }
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+    border-width: 0;
+}
 
-    .nav-tabs > li > a {
-        border: none;
-        color: #bbbbbb;
-    }
+.nav-tabs > li > a {
+    border: none;
+    color: #BBBBBB;
+}
 
-        .nav-tabs > li.active > a,
-        .nav-tabs > li > a:hover {
-            background: transparent;
-            border: none;
-            color: #FF8A65 !important;
-        }
+.nav-tabs > li.active > a,
+.nav-tabs > li > a:hover {
+    background: transparent;
+    border: none;
+    color: #ff8a65 !important;
+}
 
-        .nav-tabs > li > a::after {
-            background: #FF8A65;
-            content: "";
-            height: 4px;
-            width: 100%;
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            transition: all 250ms ease;
-            transform: scale(0);
-        }
+.nav-tabs > li > a::after {
+    background: #ff8a65;
+    content: "";
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    transition: all 250ms ease;
+    transform: scale(0);
+}
 
-    .nav-tabs > li.active > a::after,
-    .nav-tabs > li:hover > a::after {
-        transform: scale(1);
-    }
+.nav-tabs > li.active > a::after,
+.nav-tabs > li:hover > a::after {
+    transform: scale(1);
+}
 
 .tab-content {
     padding: 3rem 2.5rem;
 }
 
 /**************************************************
- LOGIN & REGISTER VIEWS
+ FORMS
 **************************************************/
+
+.small-form {
+    background-color: white;
+    padding: 4rem;
+    border-radius: 1.5rem;
+}
 
 .small-form h2,
 .small-form p {
@@ -191,11 +245,25 @@ table.tablesorter thead tr th {
     width: 50%;
 }
 
-.input-group {
+.small-form input.form-control,
+.small-form input.form-control:focus,
+.small-form .input-group-addon {
+    background-color: #ecf2f4;
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+}
+
+.small-form .input-group {
     width: 100%;
 }
 
-.input-group-addon {
+.small-form .input-group-addon {
+    background-color: #dce7eb;
+    color: #6e7783;
     width: 45px;
 }
 
@@ -218,9 +286,9 @@ div::-webkit-scrollbar-thumb {
     border-radius: 10px;
 }
 
-    div::-webkit-scrollbar-thumb:hover {
-        background-color: rgba(191, 191, 191, 8.0); /* Same as #bfbfbf */
-    }
+div::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(191, 191, 191, 8.0); /* Same as #bfbfbf */
+}
 
 /* Helpers */
 .top-buffer {

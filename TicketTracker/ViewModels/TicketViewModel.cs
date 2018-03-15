@@ -30,7 +30,10 @@ namespace TicketTracker.ViewModels
         [Display(Name = "Severity Level ID")]
         public int SeverityLevelId { get; set; }
 
-        [Display(Name = "Severity")]
+        [Display(Name = "Severity Level Code")]
+        public string SeverityLevelCode { get; set; }
+
+        [Display(Name = "Severity Level Name")]
         public string SeverityLevelName { get; set; }
 
         [Display(Name = "Severity")]
@@ -61,5 +64,8 @@ namespace TicketTracker.ViewModels
         public bool IsResolved { get; set; }
 
         public string Resolved => IsResolved ? "Resolved" : "Open/Active";
+
+        [Display(Name = "Severity")]
+        public string Severity => SeverityLevelCode + " - " + SeverityLevelName;
     }
 }

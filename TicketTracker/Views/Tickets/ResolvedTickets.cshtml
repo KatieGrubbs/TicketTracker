@@ -23,7 +23,7 @@
                             @Html.DisplayNameFor(model => model.Description)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.SeverityLevelName)
+                            @Html.DisplayNameFor(model => model.Severity)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.CategoryName)
@@ -54,7 +54,7 @@
                                 @Html.DisplayFor(modelItem => ticket.Description)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => ticket.SeverityLevelName)
+                                @Html.DisplayFor(modelItem => ticket.Severity)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => ticket.CategoryName)
@@ -74,12 +74,12 @@
                                         <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="@Url.Action("Edit", "Tickets", new {id = ticket.TicketId})"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>
-                                        <li><a href="@Url.Action("Details", "Tickets", new {id = ticket.TicketId})"><i class="fa fa-list-ul" aria-hidden="true"></i> View Details</a></li>
+                                        <li><a href="@Url.Action("Edit", "Tickets", new { id = ticket.TicketId })"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Ticket</a></li>
+                                        <li><a href="@Url.Action("Details", "Tickets", new { id = ticket.TicketId })"><i class="fa fa-list-ul" aria-hidden="true"></i> View Details</a></li>
                                         @if (User.IsInRole("Admin"))
                                         {
                                             <li role="separator" class="divider"></li>
-                                            <li><a href="@Url.Action("MarkAsOpen", "Tickets", new {id = ticket.TicketId})"><i class="fa fa-flag" aria-hidden="true"></i> Flag as Unresolved</a></li>
+                                            <li><a href="@Url.Action("FlagAsOpen", "Tickets", new { id = ticket.TicketId })" class="danger"><i class="fa fa-flag" aria-hidden="true"></i> Flag as Unresolved</a></li>
                                         }
                                     </ul>
                                 </div>

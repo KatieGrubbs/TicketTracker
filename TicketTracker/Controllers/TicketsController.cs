@@ -196,7 +196,7 @@ namespace TicketTracker.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult MarkAsResolved(int? id)
+        public ActionResult FlagAsResolved(int? id)
         {
             if (id == null)
             {
@@ -237,7 +237,7 @@ namespace TicketTracker.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult MarkAsOpen(int? id)
+        public ActionResult FlagAsOpen(int? id)
         {
             if (id == null)
             {
