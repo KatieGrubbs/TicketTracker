@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketTracker", "TicketTracker\TicketTracker.csproj", "{EE8210EF-E370-48E5-8637-9B95868C6653}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TicketTrackerDB", "TicketTrackerDB\TicketTrackerDB.sqlproj", "{C305EE9F-49F1-4889-9AE4-BA724909BD0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketTracker.Models", "TicketTracker.Models\TicketTracker.Models.csproj", "{4C12A3F4-12B7-47D9-9212-6BA09D4478E9}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TicketTracker.Database", "TicketTracker.Database\TicketTracker.Database.sqlproj", "{C305EE9F-49F1-4889-9AE4-BA724909BD0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{EE8210EF-E370-48E5-8637-9B95868C6653}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE8210EF-E370-48E5-8637-9B95868C6653}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE8210EF-E370-48E5-8637-9B95868C6653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C12A3F4-12B7-47D9-9212-6BA09D4478E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C12A3F4-12B7-47D9-9212-6BA09D4478E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C12A3F4-12B7-47D9-9212-6BA09D4478E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C12A3F4-12B7-47D9-9212-6BA09D4478E9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C305EE9F-49F1-4889-9AE4-BA724909BD0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C305EE9F-49F1-4889-9AE4-BA724909BD0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C305EE9F-49F1-4889-9AE4-BA724909BD0F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

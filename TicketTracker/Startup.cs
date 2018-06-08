@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
 using TicketTracker.Models;
+using TicketTracker.Models.Utilities;
 
 [assembly: OwinStartupAttribute(typeof(TicketTracker.Startup))]
 namespace TicketTracker
@@ -22,7 +23,7 @@ namespace TicketTracker
             {
                 var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
                 var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-                string[] roleNames = { "Admin" };
+                string[] roleNames = { UserRoles.Administrator };
                 IdentityResult roleResult;
 
                 foreach (var roleName in roleNames)
@@ -52,9 +53,9 @@ namespace TicketTracker
 
                     var adminPassword = "p@$$w0rd";
 
-                    var createPowerUser = userManager.Create(superuser, adminPassword);
+                    var createSuperuser = userManager.Create(superuser, adminPassword);
 
-                    if (createPowerUser.Succeeded)
+                    if (createSuperuser.Succeeded)
                     {
                         // make the superuser an Admin
                         userManager.AddToRole(superuser.Id, "Admin");

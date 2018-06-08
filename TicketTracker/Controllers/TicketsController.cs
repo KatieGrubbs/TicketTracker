@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using TicketTracker.Models;
+using TicketTracker.Models.Utilities;
 using TicketTracker.ViewModels;
 
 namespace TicketTracker.Controllers
@@ -26,7 +22,7 @@ namespace TicketTracker.Controllers
 
             using (var db = new ApplicationDbContext())
             {
-                if (User.IsInRole("Admin"))
+                if (User.IsInRole(UserRoles.Administrator))
                 {
                     // call stored procedure and return a list of all open tickets
                     openTickets = db.Database.SqlQuery<TicketViewModel>("GetOpenTickets").ToList();
