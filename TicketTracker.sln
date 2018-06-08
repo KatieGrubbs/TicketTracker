@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketTracker.Models", "Tic
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TicketTracker.Database", "TicketTracker.Database\TicketTracker.Database.sqlproj", "{C305EE9F-49F1-4889-9AE4-BA724909BD0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketTracker.Android", "TicketTracker.Android\TicketTracker.Android.csproj", "{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,12 @@ Global
 		{C305EE9F-49F1-4889-9AE4-BA724909BD0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C305EE9F-49F1-4889-9AE4-BA724909BD0F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C305EE9F-49F1-4889-9AE4-BA724909BD0F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
