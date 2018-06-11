@@ -1,7 +1,7 @@
 ﻿BEGIN
 	IF NOT EXISTS (SELECT * FROM SeverityLevels)
 	BEGIN
-		INSERT INTO SeverityLevels (SeverityLevelCode, SeverityLevelName)
+		INSERT INTO SeverityLevels (Code, Description)
 		VALUES
 			('S1', 'Critical'),
 			('S2', 'Major'),

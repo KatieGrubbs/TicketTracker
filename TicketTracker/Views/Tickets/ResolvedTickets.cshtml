@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TicketTracker.ViewModels.TicketViewModel>
+﻿@using TicketTracker.Models.Utilities
+@model IEnumerable<TicketTracker.ViewModels.TicketViewModel>
 
 @{
     ViewBag.Title = "Resolved Tickets";
@@ -72,13 +73,13 @@
                                         <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right pull-right" role="menu">
-                                        <li><a href="@Url.Action("Edit", "Tickets", new { id = ticket.TicketId })"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Ticket</a></li>
-                                        <li><a href="@Url.Action("Details", "Tickets", new { id = ticket.TicketId })"><i class="fa fa-list-ul" aria-hidden="true"></i> View Details</a></li>
-                                        @if (User.IsInRole("Admin"))
+                                        <li><a href="@Url.Action("Edit", "Tickets", new { id = ticket.Id })"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Ticket</a></li>
+                                        <li><a href="@Url.Action("Details", "Tickets", new { id = ticket.Id })"><i class="fa fa-list-ul" aria-hidden="true"></i> View Details</a></li>
+                                        @if (User.IsInRole(UserRoles.Administrator))
                                         {
                                             <li role="separator" class="divider"></li>
-                                            <li><a href="@Url.Action("FlagAsOpen", "Tickets", new { id = ticket.TicketId })" class="warning"><i class="fa fa-flag" aria-hidden="true"></i> Flag as Unresolved</a></li>
-                                            <li><a href="@Url.Action("FlagAsDeleted", "Tickets", new { id = ticket.TicketId })" class="danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> Remove Ticket</a></li>
+                                            <li><a href="@Url.Action("FlagAsOpen", "Tickets", new { id = ticket.Id })" class="warning"><i class="fa fa-flag" aria-hidden="true"></i> Flag as Unresolved</a></li>
+                                            <li><a href="@Url.Action("FlagAsDeleted", "Tickets", new { id = ticket.Id })" class="danger"><i class="fa fa-minus-circle" aria-hidden="true"></i> Remove Ticket</a></li>
                                         }
                                     </ul>
                                 </div>

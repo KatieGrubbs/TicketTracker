@@ -5,12 +5,12 @@ namespace TicketTracker.Models
     public class SeverityLevel
     {
         [Key]
-        public int SeverityLevelId { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string SeverityLevelCode { get; set; }
+        public string Code { get; set; }
 
         [Required]
-        public string SeverityLevelName { get; set; }
+        public string Description { get; set; }
     }
 }

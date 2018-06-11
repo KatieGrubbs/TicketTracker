@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Tickets]
 (
-	[TicketId] INT NOT NULL IDENTITY (1,1), 
+	[Id] INT NOT NULL IDENTITY (1,1), 
     [Subject] NVARCHAR(50) NOT NULL, 
     [Description] NVARCHAR(MAX) NOT NULL, 
 	[SeverityLevelId] INT NOT NULL DEFAULT 3, -- Moderate severity by default
@@ -10,11 +10,11 @@
     [IsResolved] BIT NOT NULL DEFAULT 0,
 	[IsDeleted] BIT NOT NULL DEFAULT 0, 
 
-	CONSTRAINT [PK_Tickets] PRIMARY KEY ([TicketId]),
+	CONSTRAINT [PK_Tickets] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_Tickets_SeverityLevels] FOREIGN KEY ([SeverityLevelId])
-		REFERENCES dbo.SeverityLevels ([SeverityLevelId]),
+		REFERENCES dbo.SeverityLevels ([Id]),
 	CONSTRAINT [FK_Tickets_Categories] FOREIGN KEY ([CategoryId])
-		REFERENCES dbo.Categories ([CategoryId]),
+		REFERENCES dbo.Categories ([Id]),
 	CONSTRAINT [FK_Tickets_AspNetUsers] FOREIGN KEY ([ReporterId])
 		REFERENCES dbo.AspNetUsers ([Id])
 )

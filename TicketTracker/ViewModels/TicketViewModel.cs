@@ -18,7 +18,7 @@ namespace TicketTracker.ViewModels
 
         [Key]
         [Display(Name = "Ticket ID")]
-        public int TicketId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Subject is required")]
         public string Subject { get; set; }
@@ -33,14 +33,14 @@ namespace TicketTracker.ViewModels
         [Display(Name = "Severity Level Code")]
         public string SeverityLevelCode { get; set; }
 
-        [Display(Name = "Severity Level Name")]
-        public string SeverityLevelName { get; set; }
+        [Display(Name = "Severity Level Description")]
+        public string SeverityLevelDescription { get; set; }
 
         [Display(Name = "Severity")]
         public IEnumerable<SelectListItem> SeverityLevels { get; set; }
 
         [Display(Name = "Severity")]
-        public string Severity => SeverityLevelCode + " - " + SeverityLevelName;
+        public string Severity => $"{SeverityLevelCode} - {SeverityLevelDescription}";
 
         [Required(ErrorMessage = "Category is required")]
         [Display(Name = "Category ID")]

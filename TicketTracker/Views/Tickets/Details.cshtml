@@ -27,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SeverityLevelName)
+            @Html.DisplayNameFor(model => model.Severity)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SeverityLevelName)
+            @Html.DisplayFor(model => model.Severity)
         </dd>
 
         <dt>
@@ -68,6 +68,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TicketId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to Dashboard", "OpenTickets", "Tickets")
 </p>

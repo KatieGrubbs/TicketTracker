@@ -2,6 +2,6 @@
 {
     public class UserRoles
     {
-        public readonly static string Administrator = "Admin";
+        public const string Administrator = "Admin";
     }
 }

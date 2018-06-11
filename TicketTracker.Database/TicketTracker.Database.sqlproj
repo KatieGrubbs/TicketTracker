@@ -84,4 +84,7 @@
     <None Include="Scripts\PostDeployment\Data.Categories.sql" />
     <None Include="TicketTracker.Database.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="TicketTracker.Database.refactorlog" />
+  </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿BEGIN
 	IF NOT EXISTS (SELECT * FROM Categories)
 	BEGIN
-		INSERT INTO Categories(CategoryName)
+		INSERT INTO Categories(Name)
 		VALUES
 			('Bug'),
 			('Usability'),

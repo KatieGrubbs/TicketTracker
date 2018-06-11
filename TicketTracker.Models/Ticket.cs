@@ -14,7 +14,7 @@ namespace TicketTracker.Models
         }
 
         [Key]
-        public int TicketId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Subject { get; set; }
