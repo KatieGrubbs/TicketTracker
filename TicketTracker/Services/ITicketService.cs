@@ -29,8 +29,8 @@ namespace TicketTracker.Services
 
         void DeleteTicket(int id);
 
-        IEnumerable<SelectListItem> GetSeverityLevels();
+        IEnumerable<SelectListItem> GetSeverityLevelsDropdown();
 
-        IEnumerable<SelectListItem> GetCategories();
+        IEnumerable<SelectListItem> GetCategoriesDropdown();
     }
 }

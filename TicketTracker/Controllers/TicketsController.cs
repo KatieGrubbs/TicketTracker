@@ -86,8 +86,8 @@ namespace TicketTracker.Controllers
             // Make sure that dropdownlists in the create form are populated
             var ticketViewModel = new TicketViewModel
             {
-                SeverityLevels = _ticketService.GetSeverityLevels(),
-                Categories = _ticketService.GetCategories()
+                SeverityLevels = _ticketService.GetSeverityLevelsDropdown(),
+                Categories = _ticketService.GetCategoriesDropdown()
             };
 
             return View(ticketViewModel);
@@ -138,8 +138,8 @@ namespace TicketTracker.Controllers
             }
 
             // Make sure that dropdownlists in the edit form are populated
-            ticketViewModel.SeverityLevels = _ticketService.GetSeverityLevels();
-            ticketViewModel.Categories = _ticketService.GetCategories();
+            ticketViewModel.SeverityLevels = _ticketService.GetSeverityLevelsDropdown();
+            ticketViewModel.Categories = _ticketService.GetCategoriesDropdown();
 
             return View(ticketViewModel);
         }

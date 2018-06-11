@@ -83,7 +83,7 @@ namespace TicketTracker.Services
             _ticketRepository.Delete(id);
         }
 
-        public IEnumerable<SelectListItem> GetSeverityLevels()
+        public IEnumerable<SelectListItem> GetSeverityLevelsDropdown()
         {
             using (var db = new ApplicationDbContext())
             {
@@ -97,7 +97,7 @@ namespace TicketTracker.Services
             }
         }
 
-        public IEnumerable<SelectListItem> GetCategories()
+        public IEnumerable<SelectListItem> GetCategoriesDropdown()
         {
             using (var db = new ApplicationDbContext())
             {
